@@ -25,5 +25,5 @@ queue<T> GetAll(std::string file,std::string objectname){//txt file containing t
 }
 
 void GetAllHists(){
-	
+	queue<TTree*> myQ = GetAll<TTree*>("/home/user/Droptemp/beam_00000C.txt","W");
 }
