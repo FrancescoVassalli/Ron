@@ -4,7 +4,8 @@
 RUN=1
 FRONT="PbGl_data" #put the file name here 
 BACK=".txt" #put the extension here
-START=2 #put the number of the file you want to start iternating at here
+START=1 #put the number of the file you want to start iternating at here
+OUT=$FRONT"C.txt"
 FILENUMBER=$START
 let "START++"
 PRINT=""
@@ -17,12 +18,11 @@ while [ $RUN -eq 1 ]; do
 		RUN=0
 	fi
 done
->PbGl_dataC.txt #the name of the file you want to output 
+>$OUT
 FILE2=$((FILENUMBER-1))
 while [[ $FILENUMBER -ge $START ]]; do
-	#					The filepath to the directory you are in
-	mv /home/user/Dropbox/Nagel/FLTBAnalysis/PbGl_data{$FILE2,$FILENUMBER}.txt #moves file 2 into file 3 and 3 to 4 ...
-	echo $"$FRONT$FILENUMBER$BACK">>PbGl_dataC.txt  #outfile
+	mv $PWD/$FRONT{$FILE2,$FILENUMBER}$BACK #moves file 2 into file 3 and 3 to 4 ...
+	echo $"$FRONT$FILENUMBER$BACK">>$OUT 
 	let "FILENUMBER--"
 	FILE2=$((FILENUMBER-1))
 done
